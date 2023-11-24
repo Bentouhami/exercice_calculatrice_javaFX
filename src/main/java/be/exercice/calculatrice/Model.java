@@ -1,6 +1,7 @@
 package be.exercice.calculatrice;
 
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,7 +32,7 @@ public class Model extends ActionEvent {
 
     Model() {
         root = new VBox();
-        
+
         center_box(root, pane_nums_hbox_1, pane_nums_hbox_2, pane_nums_hbox_3);
 
         initialze_content();
@@ -39,23 +40,17 @@ public class Model extends ActionEvent {
         addButtons_hbox(this.pane_nums_hbox_3, 7, 10);
         addButtons_hbox(this.pane_nums_hbox_2, 4, 7);
         addButtons_hbox(this.pane_nums_hbox_1, 1, 4);
-        
-        
-        
+
         root.getChildren().addAll(this.txtf_ouput, this.pane_nums_hbox_3, this.pane_nums_hbox_2, this.pane_nums_hbox_1);
-        
 
     }
-
 
     private void initialze_content() {
 
         this.pane_nums_hbox_1 = new HBox();
         this.pane_nums_hbox_2 = new HBox();
         this.pane_nums_hbox_3 = new HBox();
-        
-        
-        
+
         this.btn_add = new Button("+");
         this.btn_sub = new Button("-");
         this.btn_mult = new Button("*");
@@ -63,35 +58,36 @@ public class Model extends ActionEvent {
         this.btn_vir = new Button(".");
         this.btn_equ = new Button("=");
         this.btn_clear = new Button("C");
-        
+
         this.txtf_ouput = new TextField("hello test");
     }
 
-
     private void center_box(Pane... panes) {
         for (Pane pane : panes) {
-            if(pane instanceof VBox)
-                ((VBox)root).setAlignment(Pos.CENTER);
-                else if(pane instanceof HBox)
-                ((HBox)root).setAlignment(Pos.CENTER);
+            if (pane instanceof VBox)
+                ((VBox) root).setAlignment(Pos.CENTER);
+            else if (pane instanceof HBox)
+                ((HBox) root).setAlignment(Pos.CENTER);
         }
     }
 
-
     private void generateNumPad_btn(Button[] numPad) {
-        for (int i = 0; i < 10; i++) {           
-            btn_nums[i] = new Button(""+i);
+        for (int i = 0; i < 10; i++) {
+            btn_nums[i] = new Button("" + i);
             btn_nums[i].setPrefSize(50, 50);
         }
     }
-    private void addButtons_hbox(Pane pane, int index , int end) {
-        for(int i = index; i<end ; i++){
-            pane.getChildren().add(btn_nums[i]);
+
+    private void addButtons_hbox(Pane pane, int index, int end) {
+        for (int i = index; i < end; i++) {
+            if (pane instanceof HBox) 
+                ((HBox) pane).setAlignment(Pos.CENTER);
+                ((HBox) pane).getChildren().add(btn_nums[i]);
         }
+            ((HBox) pane).setPadding(new Insets(5));
     }
 
-
-    //#region getters & setters
+    // #region getters & setters
     public Pane getRoot() {
         return root;
     }
@@ -212,8 +208,7 @@ public class Model extends ActionEvent {
         this.operators = operators;
     }
 
-    //#endregion getters & setters
+    // #endregion getters & setters
     // functions and methodes
 
-    
 }
