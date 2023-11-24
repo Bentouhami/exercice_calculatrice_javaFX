@@ -86,7 +86,8 @@ public class Model extends ActionEvent {
             if (pane instanceof HBox) 
                 ((HBox) pane).setAlignment(Pos.CENTER);
                 ((HBox) pane).getChildren().add(btn_nums[i]);
-                ((HBox) pane).setMargin(btn_nums[i], new Insets(10));
+                ((HBox) pane).setMargin(btn_nums[i], new Insets(5, 4, 5, 4));
+                ((HBox) pane).setMargin(btn_nums[i], new Insets(0,2,2,2));
                 
         }
     }
