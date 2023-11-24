@@ -74,7 +74,10 @@ public class Model extends ActionEvent {
     private void generateNumPad_btn(Button[] numPad) {
         for (int i = 0; i < 10; i++) {
             btn_nums[i] = new Button("" + i);
+            btn_nums[i].setFont(myFont);
             btn_nums[i].setPrefSize(50, 50);
+            btn_nums[i].setPadding((new Insets(10)));
+            btn_nums[i].setAlignment(Pos.CENTER);
         }
     }
 
@@ -83,8 +86,9 @@ public class Model extends ActionEvent {
             if (pane instanceof HBox) 
                 ((HBox) pane).setAlignment(Pos.CENTER);
                 ((HBox) pane).getChildren().add(btn_nums[i]);
+                ((HBox) pane).setMargin(btn_nums[i], new Insets(10));
+                
         }
-            ((HBox) pane).setPadding(new Insets(5));
     }
 
     // #region getters & setters

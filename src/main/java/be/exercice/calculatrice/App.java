@@ -19,10 +19,13 @@ import java.io.IOException;
 public class App extends Application {
     private Scene scene;
     private Model model;
+    private PrimaryController control;
 
     @Override
     public void start(Stage stage) throws IOException {
         model = new Model();
+        control = new PrimaryController();
+        // control.initialzer();
         
         
         scene = new Scene(model.getRoot(), 300, 300);
