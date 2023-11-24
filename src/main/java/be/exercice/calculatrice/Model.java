@@ -32,14 +32,29 @@ public class Model extends ActionEvent {
     Model() {
         root = new VBox();
         
-
         center_box(root, pane_nums_hbox_1, pane_nums_hbox_2, pane_nums_hbox_3);
+
+        initialze_content();
+        generateNumPad_btn(btn_nums);
+        addButtons_hbox(this.pane_nums_hbox_3, 7, 10);
+        addButtons_hbox(this.pane_nums_hbox_2, 4, 7);
+        addButtons_hbox(this.pane_nums_hbox_1, 1, 4);
+        
+        
+        
+        root.getChildren().addAll(this.txtf_ouput, this.pane_nums_hbox_3, this.pane_nums_hbox_2, this.pane_nums_hbox_1);
+        
+
+    }
+
+
+    private void initialze_content() {
+
         this.pane_nums_hbox_1 = new HBox();
         this.pane_nums_hbox_2 = new HBox();
         this.pane_nums_hbox_3 = new HBox();
         
         
-        generateNumPad_btn(btn_nums);
         
         this.btn_add = new Button("+");
         this.btn_sub = new Button("-");
@@ -50,15 +65,6 @@ public class Model extends ActionEvent {
         this.btn_clear = new Button("C");
         
         this.txtf_ouput = new TextField("hello test");
-        addButtons_hbox(this.pane_nums_hbox_3, 7, 10);
-        addButtons_hbox(this.pane_nums_hbox_2, 4, 7);
-        addButtons_hbox(this.pane_nums_hbox_1, 1, 4);
-        
-        
-        
-        root.getChildren().addAll(this.txtf_ouput, this.pane_nums_hbox_3, this.pane_nums_hbox_2, this.pane_nums_hbox_1);
-        
-
     }
 
 
@@ -73,36 +79,17 @@ public class Model extends ActionEvent {
 
 
     private void generateNumPad_btn(Button[] numPad) {
-        for (int i = 0; i < 10; i++) {
-            
+        for (int i = 0; i < 10; i++) {           
             btn_nums[i] = new Button(""+i);
             btn_nums[i].setPrefSize(50, 50);
-            
-
         }
     }
     private void addButtons_hbox(Pane pane, int index , int end) {
         for(int i = index; i<end ; i++){
             pane.getChildren().add(btn_nums[i]);
-            
         }
     }
 
-
-
-    // private void addOpertors_btn(Button[] buttons, Control... controls) {
-    //     for (int i = 0; i < buttons.length; i++) {
-    //         for (Control c : controls) {
-    //             if (c instanceof Button) {
-    //                 buttons[i] = ((Button) c);
-    //                 buttons[i].setFont(myFont);
-    //                 buttons[i].setPrefSize(50, 50);
-    //                 buttons[i].setAlignment(Pos.CENTER);
-                    
-    //             }
-    //         }
-    //     }
-    // }
 
     //#region getters & setters
     public Pane getRoot() {
